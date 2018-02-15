@@ -4,7 +4,21 @@
  * and open the template in the editor.
  */
 
-var CURRENT_URL = window.location.href.split('#')[0].split('?')[0],
+var CURRENT_URL,
+    $BODY,
+    $MENU_TOGGLE,
+    $SIDEBAR_MENU,
+    $SIDEBAR_FOOTER,
+    $LEFT_COL,
+    $RIGHT_COL,
+    $NAV_MENU,
+    $FOOTER;
+
+
+// Sidebar
+$(document).ready(function() {
+
+    CURRENT_URL = window.location.href.split('#')[0].split('?')[0],
     $BODY = $('body'),
     $MENU_TOGGLE = $('#menu_toggle'),
     $SIDEBAR_MENU = $('#sidebar-menu'),
@@ -14,8 +28,8 @@ var CURRENT_URL = window.location.href.split('#')[0].split('?')[0],
     $NAV_MENU = $('.nav_menu'),
     $FOOTER = $('footer');
 
-// Sidebar
-$(document).ready(function() {
+    $BODY.addClass('nav-md');
+
     // TODO: This is some kind of easy fix, maybe we can improve this
     var setContentHeight = function () {
         // reset height
@@ -46,7 +60,7 @@ $(document).ready(function() {
                 $SIDEBAR_MENU.find('li').removeClass('active active-sm');
                 $SIDEBAR_MENU.find('li ul').slideUp();
             }
-            
+
             $li.addClass('active');
 
             $('ul:first', $li).slideDown(function() {
@@ -82,7 +96,7 @@ $(document).ready(function() {
     }).parent().addClass('active');
 
     // recompute content when resizing
-    $(window).smartresize(function(){  
+    $(window).smartresize(function(){
         setContentHeight();
     });
 
@@ -105,15 +119,15 @@ $(document).ready(function() {
         var $BOX_PANEL = $(this).closest('.x_panel'),
             $ICON = $(this).find('i'),
             $BOX_CONTENT = $BOX_PANEL.find('.x_content');
-        
+
         // fix for some div with hardcoded fix class
         if ($BOX_PANEL.attr('style')) {
             $BOX_CONTENT.slideToggle(200, function(){
                 $BOX_PANEL.removeAttr('style');
             });
         } else {
-            $BOX_CONTENT.slideToggle(200); 
-            $BOX_PANEL.css('height', 'auto');  
+            $BOX_CONTENT.slideToggle(200);
+            $BOX_PANEL.css('height', 'auto');
         }
 
         $ICON.toggleClass('fa-chevron-up fa-chevron-down');
