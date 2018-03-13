@@ -499,7 +499,7 @@ a:hover, a:focus {
   padding: 12px 20px;
 }
 .top_nav li a i {
-  font-size: 15px
+  font-size: 20px
 }
 .navbar-static-top {
   position: fixed;
@@ -4356,3 +4356,12 @@ ul.notifications {
   border: 1px solid #e5e5e5;
 }
 /** /Dropzone.js **/
+
+/** Compatibility issues **/
+#appmenu li a {
+  height: auto;
+}
+#appmenu {
+  margin: 0;
+}
+/** /Compatibility issues **/
